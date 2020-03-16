@@ -25,7 +25,13 @@ Card:
 - Generic Card class: can be used for many card games, with the assumption that all card games give "value" to the cards
 
 PlayingCard:
-- Playing Card class: generic playing cards with suits and ranks A-10, J, Q, and K. The value of each card can depend on the game, so it is left generic.
+- Playing Card class: generic playing cards with suits and ranks A-10, J, Q, and K. The value of each card can depend on the game, so it is left generic. The value of the card currently has a 1 to 1 mapping from the integers 1-14 and the ranks mentioned (i.e. A == 1, 2 == 2, ... , J == 11, Q == 12, K == 13)
 
-BlackjackCard:
-- Same as a plying card, but the value is now determined by Blackjack, where the Ace can have two different values. Therefore, we need to either make value a list to allow for multiple values, or create an exception for the Ace. We will choose to create an exception for the Ace in this case in order to not have to change the attributes of the inherited classes (Card, PlayingCard). The Ace will have a default value of 1, and when checking score, there will be an extra check if its an ACE, then the score will have two values. This will be taken care of by another class, not the cards.
+BlackjackCard (not a class):
+- Same as a playing card, but the value is now determined by Blackjack, where the Ace can have two different values. Therefore, we need to either make value a list to allow for multiple values, or create an exception for the Ace. We will choose to create an exception for the Ace in this case in order to not have to change the attributes of the inherited classes (Card, PlayingCard). The Ace will have a default value of 1, and when checking score, there will be an extra check if its an ACE, then the score will have two values. This will be taken care of by another class, not the cards.
+
+Deck:
+- A list of cards. Has methods to deal cards (pop) and shuffle the deck. The shuffle method is implemented using the "random" library, simply taking random card positions and creating a new deck. This can probably optimized, but currently has a simple implementation.
+
+PlayingCard Deck:
+- Same as Deck, but made of PlayingCards. When initialized, creates a 52 card deck (no jokers).
