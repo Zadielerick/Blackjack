@@ -1,0 +1,31 @@
+Blackjack SRD
+
+Introduction
+This simulation of a blackjack game is to be written in Python and in an object-oriented manner. The implementation should be sufficiently flexible to be used to write other card games with minimal effort.
+
+Purpose
+The purpose of the simulation is to increase familiarity with Python and object oriented programming. By the end of this project, the programmer should be comfortable with both and can identify the benefits of using object oriented programming.
+
+Scope
+The scope of the project is to create a blackjack simulator with the following properties:
+1) The blackjack game is to take place between a dealer and one player
+2) The game will only deal two cards to each player, and determine a winner or tie from this
+3) The game will only deal with blackjack cards
+
+Future Scope
+1) The game will allow the player to choose the amount of cards they wish to draw
+2) The game will create a dealer that can choose more than two cards
+2.a) The dealer should be able to follow casino regulations for dealers (hard stop at 17?)
+3) The game will allow for more than 1 player
+4) The game will allow for more cards in the deck (2 decks, 3 decks)
+
+Design Description
+
+Card:
+- Generic Card class: can be used for many card games, with the assumption that all card games give "value" to the cards
+
+PlayingCard:
+- Playing Card class: generic playing cards with suits and ranks A-10, J, Q, and K. The value of each card can depend on the game, so it is left generic.
+
+BlackjackCard:
+- Same as a plying card, but the value is now determined by Blackjack, where the Ace can have two different values. Therefore, we need to either make value a list to allow for multiple values, or create an exception for the Ace. We will choose to create an exception for the Ace in this case in order to not have to change the attributes of the inherited classes (Card, PlayingCard). The Ace will have a default value of 1, and when checking score, there will be an extra check if its an ACE, then the score will have two values. This will be taken care of by another class, not the cards.
